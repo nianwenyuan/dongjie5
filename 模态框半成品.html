@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #login{
+      display: none;
+      width: 200px;
+      height: 150px;
+      margin: auto;
+      background-color:  rgb(123, 123, 184);
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-header"><a id="link" href="javascript:void(0);">点击，弹出登录框</a></div>
+  <div id="login" class="login"> 
+    <div id="title" class="login-title">登录会员
+      <span><a id="closeBtn" href="javascript:void(0);" class="close-login">关闭</a></span>
+    </div>
+    <div class="login-input-content">
+      <div class="login-input">
+        <label for="">用户名</label>
+        <input type="text" placeholder="请输入用户名" name="info[username]" id="username" class="">
+      </div>
+      <div class="login-input">
+          <label for="">登录密码：</label>
+          <input type="password" placeholder="请输入登录密码" name="info[password]" id="password">
+      </div>
+    </div> 
+    <div id="loginBtn" class="login-button"><a href="javascript:void(0);" id="login-button-submit"></a></div> 
+  </div>
+  <div id="bg" class="login-bg"></div>
+  <script>
+    // 获取元素
+    var login=document.querySelector('.login');
+    var mask=document.querySelector('.login-bg');
+    var link=document.querySelector('#link');//id为link
+    var closeBtn=document.querySelector('#closeBtn');
+    var title=document.querySelector('#title');
+    //弹出,显示
+    link.addEventListener('click',function(){
+      mask.style.display='block';
+      login.style.display='block';
+    })
+    //点击关闭就隐藏
+    closeBtn.addEventListener('click',function(){
+      mask.style.display='none';
+      login.style.display='none';
+    })
+    title.addEventListener('mousedown',function(e){
+      window. x=e.pageX;//获取盒子里的坐标,相对于盒子的距离-login.offsetLeft-login.offsetTop
+      window. y=e.pageY;
+      console.log(x);
+      console.log(y);
+    })
+    document.addEventListener('mousemove',move)
+      function move (e){
+      login.style.left=e.pageX-x + 'px';
+      login.style.top= e.pageY-y  + 'px';
+    }
+    // document.addEventListener('mouseup',function(){
+    //   document.removeEventListener('mousemove',move);
+    // })
+  </script>
+</body>
+</html>
